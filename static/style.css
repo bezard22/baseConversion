@@ -1,0 +1,21 @@
+/* articles/conversion/style.css */
+
+.binary {
+    color: var(--red);
+}
+
+.decimal {
+    color: var(--blue);
+}
+
+.hex {
+    color: var(--green);
+}
+
+.expLine {
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    /* width: 1000px; */
+    justify-content: space-between;
+}
