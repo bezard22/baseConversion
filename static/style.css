@@ -23,3 +23,7 @@
 div.baseSelector * {
     display: inline;
 }
+
+span {
+    display: inline-block;
+}
