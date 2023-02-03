@@ -14,26 +14,21 @@ function clearAll() {
     d3.selectAll("#exp p").remove();
 }
 
-function explanation(inpVal, outVal, preBase, postBase){
+function explanation(inpVal, outVal, postBase){
     const exp = d3.select("#exp");
-    const outValDec = parseInt(inpVal, preBase).toString(10);
     const expValLen = inpVal.length*10;
 
     // set explanation
-    exp.attr("style", `width: ${100 + expValLen}px;`);
-    exp.append("p")
-        .text("Explanation:")
     const expEl = exp.append("p")
         .classed("expStr", true)
         .attr("style", "width: 1000px;")
     expEl.append("span")
         .classed("Decimal", true)
-        .text(outValDec);
+        .text(inpVal);
     expEl.append("span")
         .text("=");
     for (let i = outVal.length - 1; i >= 0; i--) {
         const curVal = parseInt(outVal[outVal.length - 1 - i], postBase) * Math.pow(postBase, i);
-        // expStr += `${curVal.toString()}+`;
         expEl.append("span")
             .classed("Decimal", true)
             .text(curVal);
@@ -45,8 +40,19 @@ function explanation(inpVal, outVal, preBase, postBase){
             .classed("Decimal", true)
             .attr("style", `width: ${expValLen}px;`)
             .text(curVal);
-        expLine.append("span")
-            .text(`= ${postBase}^${i} *`);
+        const expMidSpan = expLine.append("span");
+        expMidSpan.append("span")
+            .text("=");
+        expMidSpan.append("span")
+            .classed("Decimal", true)
+            .text(postBase);
+        expMidSpan.append("span")
+            .text("^");
+        expMidSpan.append("span")
+            .classed("Decimal", true)
+            .text(i);
+        expMidSpan.append("span")
+            .text("*");
         expLine.append("span")
             .classed(bases[postBase], true)
             .text(`${outVal[outVal.length - 1 -i]}`);
@@ -87,11 +93,14 @@ function convert() {
         outPostEl.append("span")
             .text(`${outVal}`)
         
+        exp.attr("style", `width: ${100 + expValLen}px;`);
+        exp.append("p")
+            .text("Explanation:")
         if (preBase != 10) {
-            explanation(parseInt(inpVal, preBase).toString(10), inpVal, 10, preBase);
-            explanation((inpVal, preBase).toString(10), outVal, 10, postBase);
+            explanation(parseInt(inpVal, preBase).toString(10), inpVal, preBase);
+            explanation(parseInt(inpVal, preBase).toString(10), outVal, postBase);
         } else {
-            explanation(inpVal, outVal, preBase, postBase);
+            explanation(inpVal, outVal, postBase);
         }
     }
 }
