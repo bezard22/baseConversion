@@ -1,50 +1,22 @@
 <h1>Number Conversion</h1>
 <hr>
 <section>
-    <h3><span class="decimal">Decimal</span> to <span class="binary">Binary</span></h3>
-    <table>
-        <tr class="decimal">
-            <td><label>Decimal: </label></td>
-            <td><input type="text" id="d2bIn"></td>
-            <td><Button onclick="d2b()">Convert</Button></td>
-        </tr>
-        <tr class="binary">
-            <td><label >Binary: </label></td>
-            <td><p id="d2bOut"></p></td>
-        </tr>
-    </table>
-    <div id="d2bExp"></div>
+    <div class="baseSelector">
+        <select id="preBase">
+            <option value="10">Decimal</option>
+            <option value="2">Binary</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+        <h3>to</h3>
+        <select id="postBase">
+            <option value="10">Decimal</option>
+            <option value="2">Binary</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+        <label>Input: <input type="text" id="inp"></label>
+        <Button onclick="convert()">Convert</Button>
+    </div>
+    <div id="out"></div>
+    <div id="exp" class="expLine"></div>
 </section>
 <hr>
-<section>
-    <h3><span class="decimal">Decimal</span> to <span class="hex">Hexadecimal</span></h3>
-    <table>
-        <tr class="decimal">
-            <td><label>Decimal: </label></td>
-            <td><input type="text" id="d2hIn"></td>
-            <td><Button onclick="d2h()">Convert</Button></td>
-        </tr>
-        <tr class="hex">
-            <td><label >Hexadecimal: </label></td>
-            <td><p id="d2hOut"></p></td>
-        </tr>
-    </table>
-    <div id="d2hExp"></div>
-</section>
-<hr>
-<section>
-    <h3><span class="binary">Binary</span> to <span class="decimal">Decimal</span></h3>
-    <table>
-        <tr class="binary">
-            <td><label>Binary: </label></td>
-            <td><input type="text" id="b2dIn"></td>
-            <td><Button onclick="b2d()">Convert</Button></td>
-        </tr>
-        <tr class="decimal">
-            <td><label>Decimal: </label></td>
-            <td><p id="b2dOut"></p></td>
-        </tr>
-    </table>
-    <pre id="b2dExp"></pre>
-    <hr>
-</section>

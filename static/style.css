@@ -1,14 +1,14 @@
 /* articles/conversion/style.css */
 
-.binary {
+.Binary {
     color: var(--red);
 }
 
-.decimal {
+.Decimal {
     color: var(--blue);
 }
 
-.hex {
+.Hexadecimal {
     color: var(--green);
 }
 
@@ -18,4 +18,8 @@
     max-width: 1000px;
     /* width: 1000px; */
     justify-content: space-between;
+}
+
+div.baseSelector * {
+    display: inline;
 }

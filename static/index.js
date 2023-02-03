@@ -1,19 +1,73 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
+const bases = {
+    2: "Binary",
+    10: "Decimal",
+    16: "Hexadecimal"
+}
+
 function clearAll() {
-    d3.select("#d2bExp").selectAll("p").remove();
-    d3.select("#d2hExp").selectAll("p").remove();
-    d3.select("#d2bIn").property("value", "");
-    d3.select("#d2hIn").property("value", "");
-    d3.select("#b2dIn").property("value", "");
+    document.querySelector("#preBase").value = 10;
+    document.querySelector("#postBase").value = 2;
+    document.querySelector("#inp").value = "";
+    document.querySelector("#out").value = "";
+    for (el of document.querySelectorAll("#exp p")) { el.remove(); }
+}
+
+function convert() {
+    // get elements and inputs
+    // const preBase = document.querySelector("#preBase").value;
+    // const postBase = document.querySelector("#postBase").value;
+    // const inp = document.querySelector("#inp");
+    // const out = document.querySelector("#out");
+    // const exp = document.querySelector("#exp");
+
+    const preBase = d3.select("#preBase").value;
+    const postBase = d3.select("#postBase").value;
+    const inp = d3.select("#inp");
+    const out = d3.select("#out");
+    const exp = d3.select("#exp");
+    // const inpVal = inp.attr("value");
+    console.log(inp);
+
+    // clear current input and explanation
+    out.selectAll("p").remove();
+    exp.selectAll("p").remove();
+
+    // if (inpVal.length > 0) {
+    //     // calculate and set output
+    //     const outVal = parseInt(inpVal, preBase).toString(postBase);
+    //     // const outPostEl = document.createElement("p");
+    //     // outPostEl.setAttribute("class", `${bases[preBase]} expLine`)
+    //     // outPostEl.textContent = `${bases[preBase]}: ${inpVal}`;
+    //     // out.appendChild(outPostEl);
+    //     // const outPreEl = document.createElement("p");
+    //     // outPreEl.setAttribute("class", `${bases[postBase]} expLine`)
+    //     // outPreEl.textContent = `${bases[postBase]}: ${outVal}`;
+    //     // out.appendChild(outPreEl);
+        
+
+    //     // // set explanation
+    //     // exp.setAttribute("style", `width: ${100 + input.length*10}px;`);
+    //     // const expStr = document.createElement("p");
+    //     // expStr.setAttribute('class', 'expStr')
+    //     // expStr.setAttribute('style', 'width: 1000px')
+    //     // exp.appendChild(expStr)
+    // }
+
 }
 
 function d2b() {
-    // get input
-    const input = d3.select("#d2bIn").property("value");
+    // get elementes
+    const inp = document.querySelector("#d2bIn");
+    const out = document.querySelector("#d2bOut");
+    const exp = document.querySelector("#d2bExp");
+
+    const input = inp.value;
+
     
     // clear current output and explanation
-    d3.select("#d2bOut").text("");
+    out.text = "";
     d3.select("#d2bExp").selectAll("p").remove();
     
     if (input.length > 0) {
@@ -117,33 +171,14 @@ function b2d() {
         .text(output);
 }
 
-clearAll();
-
 // Event handlers
-var input = document.getElementById("d2bIn");
+var input = document.querySelector("#inp");
 input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        d2b();
+        convert();
     }
 });
 
-var input = document.getElementById("d2hIn");
-input.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        d2h();
-    }
-});
-
-var input = document.getElementById("b2dIn");
-input.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        b2d();
-    }
-});
-window.d2b = d2b;
-window.d2h = d2h;
-window.b2d = b2d;
-window.clearAll = clearAll;
+clearAll();
+window.convert = convert;
