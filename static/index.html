@@ -1,4 +1,4 @@
-<h1>Number Conversion</h1>
+<h1>Base Conversion</h1>
 <hr>
 <section>
     <div class="baseSelector">
@@ -20,3 +20,21 @@
     <div id="exp"></div>
 </section>
 <hr>
+<section>
+    <p>In order to better understand the conversion between bases, start with <span class="Decimal">decimal</span> (base-10) which most are familiar with. All numbers represented in decimal consist of a string of digits, each corresponding to a decimal place and consisting of the 10 digits 0-9. consider the number <span class="Decimal">123</span>, the value of which can be broken down in the following way:</p>
+    <br>
+    <div style="width: 130px;"><p class="expStr" style="width: 1000px;"><span class="Decimal">123</span><span>=</span><span class="Decimal">100</span><span>+</span><span class="Decimal">20</span><span>+</span><span class="Decimal">3</span></p><p class="expLine"><span class="Decimal" style="width: 30px;">100</span><span><span>=</span><span class="Decimal">10</span><span>^</span><span class="Decimal">2</span><span>*</span></span><span class="Decimal">1</span></p><p class="expLine"><span class="Decimal" style="width: 30px;">20</span><span><span>=</span><span class="Decimal">10</span><span>^</span><span class="Decimal">1</span><span>*</span></span><span class="Decimal">2</span></p><p class="expLine"><span class="Decimal" style="width: 30px;">3</span><span><span>=</span><span class="Decimal">10</span><span>^</span><span class="Decimal">0</span><span>*</span></span><span class="Decimal">3</span></p></div>
+    <br>
+    <p>While this may seem obvious when representing a decimal value that is already familiar, it is a helpful framework for understanding other bases and how to convert between. Base-10 uses 10 digits (0-9) and each position in the string represents that digit value multiplied by the base raised to said position. Other base number representation work in the same way. Consider the <span class="Binary">binary</span> (base-2) number <span class="Binary">101</span>. The value can be determined in the same way as with <span class="Decimal">decimal</span> numbers:</p>
+    <br>
+    <div style="width: 130px;"><p class="expStr" style="width: 1000px;"><span class="Decimal">5</span><span>=</span><span class="Decimal">4</span><span>+</span><span class="Decimal">0</span><span>+</span><span class="Decimal">1</span></p><p class="expLine"><span class="Decimal" style="width: 10px;">4</span><span><span>=</span><span class="Decimal">2</span><span>^</span><span class="Decimal">2</span><span>*</span></span><span class="Binary">1</span></p><p class="expLine"><span class="Decimal" style="width: 10px;">0</span><span><span>=</span><span class="Decimal">2</span><span>^</span><span class="Decimal">1</span><span>*</span></span><span class="Binary">0</span></p><p class="expLine"><span class="Decimal" style="width: 10px;">1</span><span><span>=</span><span class="Decimal">2</span><span>^</span><span class="Decimal">0</span><span>*</span></span><span class="Binary">1</span></p></div>
+    <br>
+    <p>The value of <span class="Binary">101</span> can be determined to be <span class="Decimal">5</span> by taking each digit, multiplying it by 2 raised the positional power, and taking the sum. <span class="Binary">Binary</span> numbers are represented using only 2 digits (0, 1) and each positional value has a base of 2, rather than 10 in <span class="Decimal">decimal</span>.</p>
+    <br>
+    <p><span class="Hexadecimal">Hexadecimal</span> (base-16) continues the pattern. Because the arabic numeral symbols only go up to 9, 10-15 are represented as the letters a-f. Therefore the value of the <span class="Hexadecimal">hexadecimal</span> number <span class="Hexadecimal">f13</span> is: </p>
+    <br>
+    <div style="width: 130px;"><p class="expStr" style="width: 1000px;"><span class="Decimal">3859</span><span>=</span><span class="Decimal">3840</span><span>+</span><span class="Decimal">16</span><span>+</span><span class="Decimal">3</span></p><p class="expLine"><span class="Decimal" style="width: 40px;">3840</span><span><span>=</span><span class="Decimal">16</span><span>^</span><span class="Decimal">2</span><span>*</span></span><span class="Hexadecimal">f</span></p><p class="expLine"><span class="Decimal" style="width: 40px;">16</span><span><span>=</span><span class="Decimal">16</span><span>^</span><span class="Decimal">1</span><span>*</span></span><span class="Hexadecimal">1</span></p><p class="expLine"><span class="Decimal" style="width: 40px;">3</span><span><span>=</span><span class="Decimal">16</span><span>^</span><span class="Decimal">0</span><span>*</span></span><span class="Hexadecimal">3</span></p></div>
+    <br>
+    <p>Use the tool at the top of the page to make base conversions and show similar representations.</p>
+    <hr>
+</section>

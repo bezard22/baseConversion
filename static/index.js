@@ -14,6 +14,7 @@ function clearAll() {
     d3.selectAll("#exp p").remove();
 }
 
+// generate explanation section
 function explanation(inpVal, outVal, postBase){
     const exp = d3.select("#exp");
     const expValLen = inpVal.length*10;
@@ -57,8 +58,10 @@ function explanation(inpVal, outVal, postBase){
             .classed(bases[postBase], true)
             .text(`${outVal[outVal.length - 1 -i]}`);
     }
+    expEl.select("span:last-of-type ").remove()
 }
 
+// perfrom conversion and update document
 function convert() {
     // get elements and values
     const preBase = d3.select("#preBase").property("value");
@@ -73,11 +76,11 @@ function convert() {
     exp.selectAll("p").remove();
 
     if (inpVal.length > 0) {
-        // calculate and set output
-        const outVal = parseInt(inpVal, preBase).toString(postBase);
-        
+        // calculate output
+        const outVal = parseInt(inpVal, preBase).toString(postBase);        
         const expValLen = inpVal.length*10;
 
+        // set output
         const outPreEl = out.append("p")
             .classed(bases[preBase], true)
         outPreEl.append("span")
@@ -93,12 +96,15 @@ function convert() {
         outPostEl.append("span")
             .text(`${outVal}`)
         
+        // set explanation
         exp.attr("style", `width: ${100 + expValLen}px;`);
         exp.append("p")
             .text("Explanation:")
-        if (preBase != 10) {
+        if (preBase != 10 && postBase != 10) {
             explanation(parseInt(inpVal, preBase).toString(10), inpVal, preBase);
             explanation(parseInt(inpVal, preBase).toString(10), outVal, postBase);
+        } else if (postBase == 10) {
+            explanation(parseInt(inpVal, preBase).toString(10), inpVal, preBase);
         } else {
             explanation(inpVal, outVal, postBase);
         }
