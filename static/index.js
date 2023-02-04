@@ -9,6 +9,8 @@ const bases = {
 function clearAll() {
     d3.select("#preBase").property("value", 10);
     d3.select("#postBase").property("value", 2);
+    preBaseSelection();
+    postBaseSelection();
     d3.select("#inp").property("value", "");
     d3.select("#out").property("value", "");
     d3.selectAll("#exp p").remove();
@@ -111,14 +113,53 @@ function convert() {
     }
 }
 
-// Event handlers
+// preBase event handler
+function preBaseSelection() {
+    const preBase = d3.select("#preBase");
+    const input = d3.select("#inp");
+    input.property("value", "");
+    if (preBase.property("value") == 2) {
+        preBase.attr("class", "Binary");
+        input.attr("class", "Binary");
+    } else if (preBase.property("value") == 10) {
+        preBase.attr("class", "Decimal");
+        input.attr("class", "Decimal");
+    } else if (preBase.property("value") == 16) {
+        preBase.attr("class", "Hexadecimal");
+        input.attr("class", "Hexadecimal");
+    } 
+}
+
+// postBase event handler
+function postBaseSelection() {
+    const postBase = d3.select("#postBase");
+    console.log(postBase.property("value"))
+    if (postBase.property("value") == 2) {
+        postBase.attr("class", "Binary");
+    } else if (postBase.property("value") == 10) {
+        postBase.attr("class", "Decimal");
+    } else if (postBase.property("value") == 16) {
+        postBase.attr("class", "Hexadecimal");
+    } 
+}
+
+// Input event handlers
 var input = document.querySelector("#inp");
 input.addEventListener("keypress", function(event) {
+    const preBase = d3.select("#preBase").property("value");
     if (event.key === "Enter") {
         event.preventDefault();
         convert();
+    } else if (preBase == 10 && (event.key < '0' || event.key > '9')) {
+        event.preventDefault();
+    } else if (preBase == 2 && (event.key < '0' || event.key > '1')) {
+        event.preventDefault();
+    } else if (preBase == 16 && (event.key < '0' || event.key > '9') && (event.key < 'a' || event.key > 'f') && (event.key < 'A' || event.key > 'F')) {
+        event.preventDefault();
     }
 });
 
 clearAll();
 window.convert = convert;
+window.postBaseSelection = postBaseSelection;
+window.preBaseSelection = preBaseSelection;
